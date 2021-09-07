@@ -18,3 +18,4 @@ export default function countCats(/* matrix */) {
 function countCats(backyard) {
   return backyard.flat().filter(x => x==='^^').length
   };
+}
