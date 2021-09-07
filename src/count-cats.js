@@ -16,6 +16,8 @@ import { NotImplementedError } from '../extensions/index.js';
 export default function countCats(/* matrix */) {
 
 function countCats(backyard) {
-  return backyard.flat().filter(x => x==='^^').length
+    if (backyard.flat().filter((x) => x === "^^").length >= 1)
+      return backyard.flat().filter((x) => x === "^^").length;
+    else return 0;
   };
 }
