@@ -17,6 +17,4 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-export default function dateSample(sampleActivity) {
-   return Math.ceil( Math.log( (15 / sampleActivity) ) / (0.693 / 5730) );
-}
+
