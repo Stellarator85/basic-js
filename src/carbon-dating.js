@@ -19,6 +19,6 @@ const HALF_LIFE_PERIOD = 5730;
  */
 export default function dateSample(sampleActivity) {
   let x = Math.ceil(Math.log(15/sampleActivity)/(0.693/5730));
-  if (+sampleActivity>0) return x;
+  if (typeof sampleActivity === "string" && +sampleActivity>(-100000000)) return x;
   else return false;
 };
