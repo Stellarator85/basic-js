@@ -14,10 +14,8 @@ import { NotImplementedError } from '../extensions/index.js';
  * ]) => 3`
  *
  */
-export default function countCats(/* matrix */) {
-  function countCats(backyard) {
+export default function countCats(backyard) {
     if (backyard.flat().filter((x) => x === "^^").length >= 1)
-      return backyard.flat().filter((x) => x === "^^").length;
+    return backyard.flat().filter((x) => x === "^^").length;
     else return 0;
   };
-}
