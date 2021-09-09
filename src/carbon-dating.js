@@ -18,5 +18,5 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 export default function dateSample(sampleActivity) {
-  return Math.floor( Math.log( 15 / sampleActivity ) / (0.693 / 5730) )
+   return Math.ceil( Math.log( 15 / sampleActivity ) / (0.693 / 5730) )
 }
