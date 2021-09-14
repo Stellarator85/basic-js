@@ -21,10 +21,15 @@ export default function createDreamTeam(members) {
   )
     return stringArray
       .map(function (e) {
+        return e.trim();
+      })
+      .map(function (e) {
         return e.substring(0, 1);
       })
+      .map(function (e) {
+        return e.toUpperCase();
+      })
       .sort()
-      .join("")
-      .toUpperCase();
+      .join("");
   else return false;
 };
