@@ -23,6 +23,7 @@ export default function createDreamTeam(members) {
       .map(function (e) {
         return e.substring(0, 1);
       })
+      .sort()
       .join("")
       .toUpperCase();
   else return false;
