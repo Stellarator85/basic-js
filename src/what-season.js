@@ -12,33 +12,20 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default function getSeason(date) {
-  if (
-    (date.isArray =
-      true &&
-      date.length === 3 &&
-      (date[1] === 12) ^ (date[1] === 1) ^ (date[1] === 2))
-  )
-    return "winter";
-  else if (
-    (date.isArray =
-      true &&
-      date.length === 3 &&
-      (date[1] === 3) ^ (date[1] === 4) ^ (date[1] === 5))
-  )
-    return "spring";
-  else if (
-    (date.isArray =
-      true &&
-      date.length === 3 &&
-      (date[1] === 6) ^ (date[1] === 7) ^ (date[1] === 8))
-  )
-    return "summer";
-  else if (
-    (date.isArray =
-      true &&
-      date.length === 3 &&
-      (date[1] === 9) ^ (date[1] === 10) ^ (date[1] === 11))
-  )
-    return "autumn(fall)";
-  else throw error("Invalid date!");
-}
+  if (date) {
+    if (Object.getOwnPropertyNames(date).length != 0) { throw new Error('Invalid date!')}
+    if (date.getMonth() == 0 || date.getMonth() == 1 || date.getMonth() == 11) {
+      return 'winter'
+    }
+    if (date.getMonth() == 2 || date.getMonth() == 3 || date.getMonth() == 4) {
+      return 'spring'
+    }
+    if (date.getMonth() == 5 || date.getMonth() == 6 || date.getMonth() == 7) {
+      return 'summer'
+    }
+    if (date.getMonth() == 8 || date.getMonth() == 9 || date.getMonth() == 10) {
+      return 'autumn'
+    }
+  } else {return 'Unable to determine the time of year!'};
+
+};
