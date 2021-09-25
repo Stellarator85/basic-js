@@ -1,20 +1,20 @@
 import { NotImplementedError } from '../extensions/index.js';
 
 /**
- * Given a number, replace this number with
- * the sum of its digits until we get to a one digit number.
- *
- * @param {Number} n
- * @return {Number}
- *
+ * Create transformed array based on the control sequences that original
+ * array contains
+ * 
+ * @param {Array} arr initial array
+ * @returns {Array} transformed array
+ * 
  * @example
- * For 100, the result should be 1 (1 + 0 + 0 = 1)
- * For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
- *
+ * 
+ * transform([1, 2, 3, '--double-next', 4, 5]) => [1, 2, 3, 4, 4, 5]
+ * transform([1, 2, 3, '--discard-prev', 4, 5]) => [1, 2, 4, 5]
+ * 
  */
-export default let n = 1234;
-    //Function to get sum of digits
-    function getSum(n) {
+
+export default function getSum(n) {
         let sum = 0;
         while (n > 0 || sum > 9) {
              if(n == 0) {
