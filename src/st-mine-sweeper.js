@@ -23,28 +23,26 @@ import { NotImplementedError } from '../extensions/index.js';
  *  [1, 1, 1]
  * ]
  */
-export default function minesweeper(matrix) {
-  return matrix.reduce(
-    (minefield, line, i) => {
-      line.forEach((cell, j) => {
-        if (cell) {
-          [
-            [[i - 1], [j - 1]],
-            [[i - 1], [j + 1]],
-            [[i + 1], [j - 1]],
-            [[i + 1], [j + 1]],
-            [[i - 1], [j]],
-            [[i], [j + 1]],
-            [[i + 1], [j]],
-            [[i], [j - 1]],
-          ].forEach((fr) => {
-            if (minefield?.[fr[0]]?.[fr[1]] != undefined)
-              minefield[fr[0]][fr[1]]++;
-          });
-        }
-      });
-      return minefield;
-    },
-    Array.from(Array(matrix.length), () => new Array(matrix[0].length).fill(0))
-  );
+export default  function minesweeper ( matrix ) {
+  let returnMatrix = [];
+  for (let i = 0; i < matrix.length; i++) {
+    returnMatrix[i] = [];
+    for (let j = 0; j < matrix[i].length; j++) {
+      let countMine = 0;
+      if (matrix[i][j - 1] !== 'undefined' && matrix[i][j - 1] === true) countMine++;
+      if (matrix[i][j + 1] !== 'undefined' && matrix[i][j + 1] === true) countMine++;
+      if (Array.isArray(matrix[i - 1])) {
+        if (matrix[i - 1][j] !== 'undefined' && matrix[i - 1][j] === true) countMine++;
+        if (matrix[i - 1][j + 1] !== 'undefined' && matrix[i - 1][j + 1] === true) countMine++;
+        if (matrix[i - 1][j - 1] !== 'undefined' && matrix[i - 1][j - 1] === true) countMine++;
+      }
+      if (Array.isArray(matrix[i + 1])) {
+        if (matrix[i + 1][j] !== 'undefined' && matrix[i + 1][j] === true) countMine++;
+        if (matrix[i + 1][j + 1] !== 'undefined' && matrix[i + 1][j + 1] === true) countMine++;
+        if (matrix[i + 1][j - 1] !== 'undefined' && matrix[i + 1][j - 1] === true) countMine++;
+      }
+      returnMatrix[i][j] = countMine;
+    }
+  }
+  return returnMatrix;
 }
